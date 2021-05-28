@@ -527,3 +527,17 @@ footer {
   }
 }
 
+/* CSS for error message under form>input  */
+.error{
+  display: none;
+  justify-content: flex-end;
+  font-size: 0.45em;
+  color: red;
+  white-space: nowrap;
+  margin-bottom: -3vh;
+}
+
+.error-visible{
+  display: flex;
+}
+
