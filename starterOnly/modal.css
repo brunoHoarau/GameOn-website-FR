@@ -534,10 +534,19 @@ footer {
   font-size: 0.45em;
   color: red;
   white-space: nowrap;
-  margin-bottom: -3vh;
+  /* margin-bottom: -3vh; */
 }
 
 .error-visible{
   display: flex;
+}
+
+#success{
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  color: red;
+  font-size: 2em;
+  height: 90vh;
 }
 

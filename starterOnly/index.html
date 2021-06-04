@@ -60,7 +60,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(this)"
               
             >
               <div
@@ -73,7 +73,8 @@
                   name="first"
                   minlength="2"
                   required
-                /><br>
+                />
+                <span id="error-firstname" class="error"></span>
               </div>
               <div
                 class="formData">
@@ -85,7 +86,8 @@
                   name="last"
                   minlength="2"
                   required
-                /><br>
+                />
+                <span id="error-lastname" class="error"></span>
               </div>
               <div
                 class="formData">
@@ -107,7 +109,9 @@
                   id="birthdate"
                   name="birthdate"
                   required
-                /><br>
+                />
+                <span id="error-birthdate" class="error"></span>
+                <br>
               </div>
               <div
                 class="formData">
@@ -184,6 +188,7 @@
                   Portland</label
                 >
               </div>
+              <span id="error-radio" class="error"></span>
 
               <div
                 class="formData">
@@ -214,6 +219,7 @@
                 value="C'est parti"
               />
             </form>
+            <div id="success">Merci ! Votre réservation a été reçue.</div>
           </div>
         </div>
       </div>
