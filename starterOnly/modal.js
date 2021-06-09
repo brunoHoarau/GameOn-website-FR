@@ -13,7 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
 const btnSubmit = document.getElementsByClassName("btn-submit")[0];
-const checkbox1 = document.getEgitlementById("checkbox1");
+const checkbox1 = document.getElementById("checkbox1");
 const birtD = document.getElementById("birthdate");
 const lastName = document.getElementById("last");
 const firstName = document.getElementById("first");
@@ -22,8 +22,11 @@ const modalBody = document.getElementsByClassName('modal-body');
 const success = document.getElementById('success');
 const br = document.createElement('br');
 const radio = document.querySelectorAll('input[name=location]');
+const email = document.getElementById('email');
 
-
+// Regex
+const mailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ;
+const letteRegex = /^[a-zA-Z]+$/;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -67,33 +70,40 @@ function allControl(){
 
   // Control birthdate & error msg 
   if ( birtD.value.length < 10 || birtD.value.length >10){
-    console.log(birtD.value);
       document.getElementById('error-birthdate').innerHTML = "Vous devez entrer votre date de naissance.";
       document.getElementById('error-birthdate').classList.add('error-visible');
     } else {
       document.getElementById('error-birthdate').innerHTML = "";
     }
 
-    // Control lastname & error msg 
-    if(lastName.value.length < 2){
-      document.getElementById('error-lastname').innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-      document.getElementById('error-lastname').classList.add('error-visible');
-    } else {
-      document.getElementById('error-lastname').innerHTML = "";
+
+  // Control e-mail (Regex) & error msg
+  if ( email.value.length > 2 && email.value.match(mailRegex)){
+    document.getElementById('error-email').innerHTML = "";
+  } else {
+      document.getElementById('error-email').innerHTML = "Vous devez entrer une adresse email valide.";
+      document.getElementById('error-email').classList.add('error-visible');
     }
+
+
+
+  // Control lastname & error msg 
+  if(lastName.value.match(letteRegex) === null ||lastName.value.length < 2){
+    document.getElementById('error-lastname').innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    document.getElementById('error-lastname').classList.add('error-visible');
+  } else {
+    document.getElementById('error-lastname').innerHTML = "";
+  }
     
     
-    // Control firstname & error msg 
-  if(firstName.value.length < 2){
+  // Control firstname & error msg 
+  if(firstName.value.match(letteRegex) === null || firstName.value.length <2){
     document.getElementById('error-firstname').innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
     document.getElementById('error-firstname').classList.add('error-visible');
   } else {
     document.getElementById('error-firstname').innerHTML = "";
   }
-
 }
-
-
 
 // control city choose by radio
 const radioMap = [];
